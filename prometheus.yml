@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s # By default, scrape targets every 15 seconds.
+
+scrape_configs:
+  # Monitor the Axum server
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: hello-world
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: [ "host.docker.internal:3000" ]
+
+  # Configure Prometheus to monitor itself
+  - job_name: "prometheus"
+    static_configs:
+      - targets: [ "localhost:9090" ]
