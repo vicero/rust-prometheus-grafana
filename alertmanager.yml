@@ -1,0 +1,13 @@
+global:
+  resolve_timeout: 5m
+route:
+  receiver: webhook_receiver
+
+receivers:
+  - name: webhook_receiver
+    # This is a webhook receiver that sends alerts to a specified URL.
+    # It can be used to integrate with external systems or services.
+    # create one at https://webhook.site/
+    webhook_configs:
+      - url: 'https://webhook.site/62374319-7811-432b-888f-51fe31f18049'
+        send_resolved: false

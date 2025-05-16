@@ -1,0 +1,6 @@
+groups:
+  - name: Delay greater than 200ms
+    rules:
+      - alert: DelayGreaterThan200ms
+        expr: http_request_duration_seconds{job="hello-world",quantile="0.5"} > 0.2
+        for: 1s

@@ -11,9 +11,19 @@ services:
       - "9090:9090"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./rules.yml:/etc/prometheus/rules.yml
       - prometheus-data:/prometheus
+  alert-manager:
+    image: prom/alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - alertmanager-data:/alertmanager
 volumes:
   grafana-data:
     external: false
   prometheus-data:
+    external: false
+  alertmanager-data:
     external: false

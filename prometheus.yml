@@ -1,6 +1,12 @@
 global:
   scrape_interval: 15s # By default, scrape targets every 15 seconds.
-
+rule_files:
+  - rules.yml
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - host.docker.internal:9093
 scrape_configs:
   # Monitor the Axum server
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
